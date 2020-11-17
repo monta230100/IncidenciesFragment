@@ -33,7 +33,7 @@ public class fragment_menu extends Fragment {
                 FragmentTransaction menuTransaction = menuManager.beginTransaction();
                 Fragment afegir = new afegir();
 
-                menuTransaction.replace(R.id.linearLayout, afegir);
+                menuTransaction.replace(R.id.fragmentLayout, afegir);
 
                 menuTransaction.commit();
             }
@@ -47,7 +47,7 @@ public class fragment_menu extends Fragment {
                 FragmentTransaction menuTransaction = menuManager.beginTransaction();
                 Fragment llistar = new llistar();
 
-                menuTransaction.replace(R.id.linearLayout, llistar);
+                menuTransaction.replace(R.id.fragmentLayout, llistar);
 
                 menuTransaction.commit();
             }
@@ -61,7 +61,7 @@ public class fragment_menu extends Fragment {
                 FragmentTransaction menuTransaction = menuManager.beginTransaction();
                 Fragment eliminar = new eliminar();
 
-                menuTransaction.replace(R.id.linearLayout, eliminar);
+                menuTransaction.replace(R.id.fragmentLayout, eliminar);
 
                 menuTransaction.commit();
             }

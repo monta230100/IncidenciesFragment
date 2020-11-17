@@ -4,9 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Incidencia implements Serializable {
-    private String incidencia;
-    private String prioritat;
+    protected String incidencia;
+    protected String prioritat;
 
+    public Incidencia(String titol, String prioritat) {
+        this.incidencia = titol;
+        this.prioritat = prioritat;
+    }
 
     public String getIncidencia() {
         return incidencia;

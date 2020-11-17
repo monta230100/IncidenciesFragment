@@ -21,13 +21,13 @@ public class MainActivity extends AppCompatActivity {
         entrar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String usuario=((EditText) findViewById(R.id.user)).getText().toString();
-                String contraseña=((EditText) findViewById(R.id.password)).getText().toString();
+                String contrasena=((EditText) findViewById(R.id.password)).getText().toString();
 
-                if (usuario.equals("admin")&& contraseña.equals("admin")) {
+                if (usuario.equals("admin")&& contrasena.equals("admin")) {
                     startActivity(new Intent(MainActivity.this, GeneralActivity.class));
-                }
-                else
+                }else {
                     Toast.makeText(getApplicationContext(), "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

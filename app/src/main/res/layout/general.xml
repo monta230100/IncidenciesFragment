@@ -7,6 +7,7 @@
     tools:context=".GeneralActivity">
 
     <fragment
+        android:id="@+id/menu"
         android:name="com.example.incidenciesfragment.fragment_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,37 +18,17 @@
 
     </fragment>
 
-    <fragment
-    android:name="com.example.incidenciesfragment.afegir"
-    android:layout_width="419dp"
-    android:layout_height="565dp"
-    android:layout_marginTop="40dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    tools:layout="@layout/fragment_afegir" />
-
-    <fragment
-        android:name="com.example.incidenciesfragment.llistar"
-        android:layout_width="419dp"
-        android:layout_height="565dp"
-        android:layout_marginTop="40dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragmentLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_llistar" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <fragment
-        android:name="com.example.incidenciesfragment.eliminar"
-        android:layout_width="419dp"
-        android:layout_height="565dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_eliminar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
