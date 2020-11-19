@@ -1,6 +1,7 @@
 package com.example.incidenciesfragment;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,20 +18,26 @@ import com.example.incidenciesfragment.IncidenciaDBHelper.IncidenciaDBHelper;
 import java.util.ArrayList;
 
 public class llistar extends Fragment {
-    RecyclerView recyclerView;
+   RecyclerView recyclerView;
     ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
-    IncidenciaDBHelper db;
+    private IncidenciaDBHelper dbHelper;
+    private SQLiteDatabase db;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState)  {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_llistar);
-        incidencias = db.getAllIncidencies(db.getReadableDatabase());
+    public View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View llistar = inflater.inflate(R.layout.fragment_llistar, container, false);
+        dbHelper = new IncidenciaDBHelper(this.getContext());
+        db = dbHelper.getWritableDatabase();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this);
+        incidencias = dbHelper.getAllIncidencies(db);
+
+        RecyclerView recyclerView = llistar.findViewById(R.id.recyclerView);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this.getContext(), incidencias);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager((this)));
+        recyclerView.setLayoutManager(new LinearLayoutManager((this.getContext())));
+
+        return llistar;
     }
+
+
 
 }

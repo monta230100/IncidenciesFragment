@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
-    ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+    ArrayList<Incidencia> incidencies = new ArrayList<Incidencia>();
     private Context context;
-    int tamaño = incidencias.size();
+    int tamaño = incidencies.size();
 
-    public RecyclerViewAdapter(Context con){
+    public RecyclerViewAdapter(Context con, ArrayList<Incidencia> incidencias){
         context = con;
+        incidencies = incidencias;
     }
 
     @NonNull
@@ -30,14 +31,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int tamaño) {
-        holder.etiquetaIncidencia.setText(incidencias.get(tamaño).getIncidencia());
-        holder.etiquetaPrioritat.setText(incidencias.get(tamaño).getPrioritat());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.etiquetaIncidencia.setText(incidencies.get(position).getIncidencia());
+        holder.etiquetaPrioritat.setText(incidencies.get(position).getPrioritat());
     }
 
     @Override
     public int getItemCount() {
-        return incidencias.size();
+        return incidencies.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
