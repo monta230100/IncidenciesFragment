@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IncidenciesFragment">VorfälleFragment</string>
+    <string-array name="Urgencia">
+        <item>Hoch</item>
+        <item>Mittel</item>
+        <item>Niedrig</item>
+    </string-array>
+    <string name="Username">Nutzer</string>
+    <string name="psswd">Passwort</string>
+    <string name="guardar">Sparen</string>
+    <string name="titol">" Vorfall"</string>
+    <string name="btnAfegir">HINZUFÜGEN</string>
+    <string name="btnLlistar">AUFLISTEN</string>
+    <string name="btnEliminar">ENTFERNEN</string>
+    <string name="language">SPRACHE</string>
+    <string name="incidencias">VORFALLPROTOKOLL</string>
+    <string name="preferences">PRÄFERENZEN</string>
+    <string name="description">BESCHREIBUNG</string>
+</resources>

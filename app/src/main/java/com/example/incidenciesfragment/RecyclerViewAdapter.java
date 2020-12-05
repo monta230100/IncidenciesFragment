@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,9 +33,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.etiquetaIncidencia.setText(incidencies.get(position).getIncidencia());
         holder.etiquetaPrioritat.setText(incidencies.get(position).getPrioritat());
+        holder.etiquetaEstat.setText(incidencies.get(position).getEstat());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                ExtraInfo info = new ExtraInfo();
+                info.contador = position;
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.InfoLayout, info).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
@@ -42,13 +54,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView etiquetaIncidencia, etiquetaPrioritat;
+        TextView etiquetaIncidencia, etiquetaPrioritat, etiquetaEstat;
         ConstraintLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaIncidencia = itemView.findViewById(R.id.incidencia);
             etiquetaPrioritat = itemView.findViewById(R.id.Nivell);
+            etiquetaEstat = itemView.findViewById(R.id.EstatType);
             layout = itemView.findViewById(R.id.layout);
         }
     }

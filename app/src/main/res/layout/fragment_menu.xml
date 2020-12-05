@@ -18,14 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="AFEGIR" />
+            android:text="AÑADIR" />
 
         <Button
             android:id="@+id/btnLlistar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="LLISTAR" />
+            android:text="LISTAR" />
 
         <Button
             android:id="@+id/btnEliminar"
@@ -33,6 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="ELIMINAR" />
+
+        <Button
+            android:id="@+id/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="IDIOMA" />
     </LinearLayout>
 
 </FrameLayout>

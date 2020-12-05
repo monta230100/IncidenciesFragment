@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,9 +60,22 @@ public class fragment_menu extends Fragment {
             public void onClick(View V) {
                 FragmentManager menuManager = getFragmentManager();
                 FragmentTransaction menuTransaction = menuManager.beginTransaction();
-                Fragment eliminar = new eliminar();
+                Fragment Eliminar = new Eliminar();
 
-                menuTransaction.replace(R.id.fragmentLayout, eliminar);
+                menuTransaction.replace(R.id.fragmentLayout, Eliminar);
+
+                menuTransaction.commit();
+            }
+        });
+        Button Language = fMenu.findViewById(R.id.language);
+        Language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View V) {
+                FragmentManager menuManager = getFragmentManager();
+                FragmentTransaction menuTransaction = menuManager.beginTransaction();
+                Fragment Language = new Language();
+
+                menuTransaction.replace(R.id.fragmentLayout, Language);
 
                 menuTransaction.commit();
             }

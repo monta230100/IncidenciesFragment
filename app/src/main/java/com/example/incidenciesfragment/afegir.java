@@ -14,8 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.incidenciesfragment.IncidenciaDBHelper.IncidenciaDBHelper;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class afegir extends Fragment  {
     protected Spinner spinner;
@@ -24,7 +29,7 @@ public class afegir extends Fragment  {
 
     public View afegirVista;
 
-    public void afegirIncidencia() {
+    public void afegir() {
         // Required empty public constructor
     }
 
@@ -38,21 +43,31 @@ public class afegir extends Fragment  {
 
         dbHelper = new IncidenciaDBHelper(this.getContext());
         db = dbHelper.getWritableDatabase();
+        // Canvi estructura db
+        dbHelper.dropTable(db);
+        dbHelper.onCreate(db);
 
-        /*spinner = afegirVista.findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(afegirVista.getContext(), R.array.Urgencia, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner = afegirVista.findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, getActivity().getResources().getStringArray(R.array.Urgencia));
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this.getContext());
-*/
+
+
         final Button guardar = afegirVista.findViewById(R.id.guardar);
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V) {
                 EditText nom = afegirVista.findViewById(R.id.titol);
                 String nombre = nom.getText().toString();
-                //String nivell = spinner.getSelectedItem().toString();
-                Incidencia incidencia = new Incidencia(nombre, "alta");
+                String nivell = spinner.getSelectedItem().toString();
+                EditText desc = afegirVista.findViewById(R.id.description);
+                String descripcion = desc.getText().toString();
+                String estat = "PENDIENTE";
+                SimpleDateFormat sdfDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date now = new Date();
+                String date = sdfDate.format(now);
+
+                Incidencia incidencia = new Incidencia(nombre, nivell, descripcion, estat, date);
 
                 dbHelper.insertIncidencia(db, incidencia);
 

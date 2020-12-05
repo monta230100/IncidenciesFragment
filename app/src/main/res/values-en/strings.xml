@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IncidenciesFragment">IncidenceFragment</string>
+    <string-array name="Urgencia">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+    <string name="Username">Username</string>
+    <string name="psswd">Password</string>
+    <string name="titol">Incidence</string>
+    <string name="guardar">Save</string>
+    <string name="btnAfegir">ADD</string>
+    <string name="btnLlistar">LIST</string>
+    <string name="btnEliminar">DELETE</string>
+    <string name="language">LANGUAGE</string>
+    <string name="incidencias">INCIDENT LOG</string>
+    <string name="preferences">PREFERENCES</string>
+    <string name="description">DESCRIPTION</string>
+</resources>

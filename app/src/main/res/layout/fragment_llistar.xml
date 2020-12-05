@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".llistar">
+    tools:context=".llistar"
+    android:id="@+id/FrameLayout">
 
     <LinearLayout
         android:layout_width="584dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/Layout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -20,6 +22,7 @@
             android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"
             android:layout_marginBottom="1dp" />
+
     </LinearLayout>
 
 </FrameLayout>
