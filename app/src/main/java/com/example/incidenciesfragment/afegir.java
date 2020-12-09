@@ -44,8 +44,8 @@ public class afegir extends Fragment  {
         dbHelper = new IncidenciaDBHelper(this.getContext());
         db = dbHelper.getWritableDatabase();
         // Canvi estructura db
-        dbHelper.dropTable(db);
-        dbHelper.onCreate(db);
+        //dbHelper.dropTable(db);
+        //dbHelper.onCreate(db);
 
         spinner = afegirVista.findViewById(R.id.spinner);
 

@@ -1,11 +1,13 @@
 package com.example.incidenciesfragment;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +26,10 @@ public class ExtraInfo extends Fragment {
     ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
     private IncidenciaDBHelper dbHelper;
     private SQLiteDatabase db;
-    TextView desc, dat;
+    TextView desc, dat, list;
     int contador, num = 1;
-    Date curDate;
-    String estatAnterior = "PENDIENTE";
+    String estatAnterior = "PENDIENTE", estatActual;
+
 
 
     public ExtraInfo() {
@@ -48,6 +50,8 @@ public class ExtraInfo extends Fragment {
         dat.setText(incidencias.get(contador).getDate());
         final String count = Integer.toString(contador);
 
+
+
         final Button estat = ExtraInfo.findViewById(R.id.btnEstat);
         estat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,24 +62,32 @@ public class ExtraInfo extends Fragment {
                 }
                 if (num == 1){
                     estatAnterior = "ASIGNADO";
+                    estatActual = "PENDIENTE";
                     dbHelper.UpdateEstat(db,"PENDIENTE", count);
                     estat.setText("PENDIENTE");
                     estat.setBackgroundColor(Color.RED);
+                    incidencias.get(contador).setIncidencia(estatActual);
+
                 }
                 if (num == 2){
                     estatAnterior = "PENDIENTE";
+                    estatActual = "ASIGNADO";
                     dbHelper.UpdateEstat(db, "ASIGNADO", count);
                     estat.setText("ASIGNADO");
                     estat.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.Orange));
+                    incidencias.get(contador).setIncidencia(estatActual);
                 }
                 if (num == 3){
                     estatAnterior = "ASIGNADO";
+                    estatActual = "REALIZADO";
                     dbHelper.UpdateEstat(db,"REALIZADO", count);
                     estat.setText("REALIZADO");
                     estat.setBackgroundColor(Color.GREEN);
+                    incidencias.get(contador).setIncidencia(estatActual);
                 }
             }
         });
         return ExtraInfo;
     }
+
 }

@@ -2,18 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/InfoLayout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/InfoLayout">
+    android:layout_height="150dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
-        android:layout_width="410dp"
-        android:layout_height="65dp"
+        android:layout_width="409dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023">
 
         <TextView
             android:id="@+id/Nivell"
@@ -40,8 +42,8 @@
 
         <ImageView
             android:id="@+id/EstatColor"
-            android:layout_width="59dp"
-            android:layout_height="57dp"
+            android:layout_width="73dp"
+            android:layout_height="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Nivell"
@@ -50,8 +52,8 @@
 
         <TextView
             android:id="@+id/EstatType"
-            android:layout_width="53dp"
-            android:layout_height="30dp"
+            android:layout_width="73dp"
+            android:layout_height="32dp"
             android:layout_alignLeft="@+id/EstatColor"
             android:layout_alignTop="@+id/EstatColor"
             android:layout_alignRight="@+id/EstatColor"
@@ -59,6 +61,7 @@
             android:layout_margin="1dp"
             android:gravity="center"
             android:textColor="#000000"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/EstatColor"
             app:layout_constraintEnd_toEndOf="@+id/EstatColor"
             app:layout_constraintHorizontal_bias="0.484"
@@ -66,4 +69,15 @@
             app:layout_constraintTop_toTopOf="@+id/EstatColor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/extraInfo"
+        android:layout_width="414dp"
+        android:layout_height="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"></androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

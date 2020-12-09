@@ -32,7 +32,6 @@ public class llistar extends Fragment {
                              Bundle savedInstanceState) {
         View llistar = inflater.inflate(R.layout.fragment_llistar, container, false);
 
-
         dbHelper = new IncidenciaDBHelper(this.getContext());
         db = dbHelper.getWritableDatabase();
         incidencias = dbHelper.getAllIncidencies(db);
@@ -43,7 +42,4 @@ public class llistar extends Fragment {
 
         return llistar;
     }
-
-
-
 }

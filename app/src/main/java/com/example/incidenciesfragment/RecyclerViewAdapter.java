@@ -19,6 +19,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     int tamaño = incidencies.size();
 
+
     public RecyclerViewAdapter(Context con, ArrayList<Incidencia> incidencias){
         context = con;
         incidencies = incidencias;
@@ -33,7 +34,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.etiquetaIncidencia.setText(incidencies.get(position).getIncidencia());
         holder.etiquetaPrioritat.setText(incidencies.get(position).getPrioritat());
         holder.etiquetaEstat.setText(incidencies.get(position).getEstat());
@@ -43,7 +44,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
                 ExtraInfo info = new ExtraInfo();
                 info.contador = position;
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.InfoLayout, info).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.extraInfo, info).addToBackStack(null).commit();
             }
         });
     }
@@ -64,6 +65,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             etiquetaEstat = itemView.findViewById(R.id.EstatType);
             layout = itemView.findViewById(R.id.layout);
         }
+        public TextView txt(String estat) {
+            etiquetaEstat.setText(estat);
+            return etiquetaEstat;
+        }
     }
+
 }
 
