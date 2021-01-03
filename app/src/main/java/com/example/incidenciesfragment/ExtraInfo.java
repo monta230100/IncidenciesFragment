@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +24,14 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ExtraInfo extends Fragment {
-    ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+    Incidencia incidencia;
     private IncidenciaDBHelper dbHelper;
     private SQLiteDatabase db;
     TextView desc, dat, list;
     int contador, num = 1;
     String estatAnterior = "PENDIENTE", estatActual;
 
-
+    int color;
 
     public ExtraInfo() {
         // Required empty public constructor
@@ -42,49 +43,56 @@ public class ExtraInfo extends Fragment {
         View ExtraInfo = inflater.inflate(R.layout.fragment_extra_info, container, false);
         dbHelper = new IncidenciaDBHelper(this.getContext());
         db = dbHelper.getWritableDatabase();
-        incidencias = dbHelper.getAllIncidencies(db);
+        incidencia = dbHelper.getIncidencia(db, contador);
+
+        Log.i("prova", "" + contador);
 
         desc = ExtraInfo.findViewById(R.id.Descripcion);
         dat = ExtraInfo.findViewById(R.id.Date);
-        desc.setText(incidencias.get(contador).getDescripcion());
-        dat.setText(incidencias.get(contador).getDate());
-        final String count = Integer.toString(contador);
-
-
+        desc.setText(incidencia.getDescripcion());
+        dat.setText(incidencia.getDate());
 
         final Button estat = ExtraInfo.findViewById(R.id.btnEstat);
+        switch (incidencia.getEstat()){
+            case "ASIGNADO":
+                estat.setText(incidencia.getEstat());
+                estat.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.asignado));
+                break;
+            case "PENDIENTE":
+                estat.setText(incidencia.getEstat());
+                estat.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.pendiente));
+                break;
+            case "REALIZADO":
+                estat.setText(incidencia.getEstat());
+                estat.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.resuelto));
+        }
         estat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                num = num + 1;
-                if (num<1 || num>3){
-                    num = 1;
-                }
-                if (num == 1){
-                    estatAnterior = "ASIGNADO";
-                    estatActual = "PENDIENTE";
-                    dbHelper.UpdateEstat(db,"PENDIENTE", count);
-                    estat.setText("PENDIENTE");
-                    estat.setBackgroundColor(Color.RED);
-                    incidencias.get(contador).setIncidencia(estatActual);
+
+                switch (incidencia.getEstat()){
+                    case "ASIGNADO":
+                        estatActual = "REALIZADO";
+                        color = ContextCompat.getColor(getContext(), R.color.resuelto);
+                        break;
+
+                    case "PENDIENTE":
+                        estatActual = "ASIGNADO";
+                        color = ContextCompat.getColor(getContext(), R.color.asignado);
+                        break;
+
+                    case "REALIZADO":
+                        estatActual = "PENDIENTE";
+                        color = ContextCompat.getColor(getContext(), R.color.pendiente);
+                        break;
+                    default:
 
                 }
-                if (num == 2){
-                    estatAnterior = "PENDIENTE";
-                    estatActual = "ASIGNADO";
-                    dbHelper.UpdateEstat(db, "ASIGNADO", count);
-                    estat.setText("ASIGNADO");
-                    estat.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.Orange));
-                    incidencias.get(contador).setIncidencia(estatActual);
-                }
-                if (num == 3){
-                    estatAnterior = "ASIGNADO";
-                    estatActual = "REALIZADO";
-                    dbHelper.UpdateEstat(db,"REALIZADO", count);
-                    estat.setText("REALIZADO");
-                    estat.setBackgroundColor(Color.GREEN);
-                    incidencias.get(contador).setIncidencia(estatActual);
-                }
+
+                dbHelper.UpdateEstat(db,estatActual, incidencia.getId());
+                estat.setText(estatActual);
+                estat.setBackgroundColor(color);
+                incidencia.setEstat(estatActual);
             }
         });
         return ExtraInfo;

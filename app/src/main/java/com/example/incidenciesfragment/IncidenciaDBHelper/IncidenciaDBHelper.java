@@ -66,7 +66,8 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
     }
     public ArrayList<Incidencia> getAllIncidencies(SQLiteDatabase db) {
         ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+        Cursor res;
+        res = db.rawQuery("select * from "+TABLE_NAME,null);
 
         while(res.moveToNext()) {
             String titol = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_NAME_TITLE));
@@ -75,7 +76,31 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
             String estat = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_ESTAT));
             String date = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_DATE));
 
+            int id = res.getInt(res.getColumnIndex(IncidenciaEntry.ID));
+
             Incidencia incidencia = new Incidencia(titol, prioritat, descripcion, estat, date);
+            incidencia.setId(id);
+            incidencias.add(incidencia);
+        }
+        res.close();
+        return incidencias;
+    }
+    public ArrayList<Incidencia> getSelectedIncidencies(SQLiteDatabase db, String nivell) {
+        ArrayList<Incidencia> incidencias = new ArrayList<Incidencia>();
+        Cursor res;
+        res = db.rawQuery("select * from "+TABLE_NAME+" WHERE "+COLUMN_PRIORITAT+" = "+nivell,null);
+
+        while(res.moveToNext()) {
+            String titol = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_NAME_TITLE));
+            String prioritat = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_PRIORITAT));
+            String descripcion = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_DESCRIPCION));
+            String estat = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_ESTAT));
+            String date = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_DATE));
+
+            int id = res.getInt(res.getColumnIndex(IncidenciaEntry.ID));
+
+            Incidencia incidencia = new Incidencia(titol, prioritat, descripcion, estat, date);
+            incidencia.setId(id);
             incidencias.add(incidencia);
         }
         res.close();
@@ -84,17 +109,45 @@ public class IncidenciaDBHelper extends SQLiteOpenHelper {
     public void deleteAll(SQLiteDatabase db){
         db.execSQL("DELETE FROM "+TABLE_NAME);
     }
+    public void deleteOne(SQLiteDatabase db, int id){ db.execSQL("DELETE FROM "+TABLE_NAME+" WHERE ID="+id);}
 
     public void dropTable(SQLiteDatabase db){
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
-    public void UpdateEstat(SQLiteDatabase db,String estat,String row_id) {
+    public void UpdateEstat(SQLiteDatabase db,String estat,int row_id) {
         if (db.isOpen()){
             values.put(COLUMN_ESTAT, estat);
-            db.update(TABLE_NAME, values, "id=?", new String[]{row_id});
+            String sql = "UPDATE " + IncidenciaEntry.TABLE_NAME + " SET estat='" + estat + "' WHERE id=" + row_id;
+            db.execSQL(sql);
+            Log.i("prova", sql);
+           // db.update(TABLE_NAME, values, "id=?", new String[]{row_id});
         } else {
             Log.d("sql","Database is closed");
         }
     }
 
+    public Incidencia getIncidencia(SQLiteDatabase db, int contador){
+        Cursor res = db.rawQuery("SELECT * FROM " + IncidenciaEntry.TABLE_NAME + " WHERE id=" + contador, null);
+
+        Incidencia incidencia = null;
+
+        //Iteration on the cursor results and fill the array
+        while (res.moveToNext()) {
+            String titol = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_NAME_TITLE));
+            String prioritat = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_PRIORITAT));
+            String descripcion = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_DESCRIPCION));
+            String estat = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_ESTAT));
+            String date = res.getString(res.getColumnIndex(IncidenciaEntry.COLUMN_DATE));
+
+            int id = res.getInt(res.getColumnIndex(IncidenciaEntry.ID));
+
+            incidencia = new Incidencia(titol, prioritat, descripcion, estat, date);
+            incidencia.setId(id);
+        }
+
+        res.close();
+
+        return incidencia;
+
+    }
 }

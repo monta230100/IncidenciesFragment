@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/InfoLayout"
     android:layout_width="wrap_content"
-    android:layout_height="150dp">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
@@ -24,9 +24,10 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintHorizontal_bias="0.678"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.529" />
 
         <TextView
             android:id="@+id/incidencia"
@@ -35,10 +36,10 @@
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.093"
+            app:layout_constraintHorizontal_bias="0.212"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.571" />
+            app:layout_constraintVertical_bias="0.538" />
 
         <ImageView
             android:id="@+id/EstatColor"
@@ -47,8 +48,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Nivell"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@color/Orange" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/EstatType"
@@ -68,16 +68,14 @@
             app:layout_constraintStart_toStartOf="@+id/EstatColor"
             app:layout_constraintTop_toTopOf="@+id/EstatColor" />
 
+        <Button
+            android:id="@+id/btnDrop"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:text="X"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="7dp" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/extraInfo"
-        android:layout_width="414dp"
-        android:layout_height="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"></androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

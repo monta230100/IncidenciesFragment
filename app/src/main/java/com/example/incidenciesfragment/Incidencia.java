@@ -9,6 +9,7 @@ public class Incidencia implements Serializable {
     protected String descripcion;
     protected String estat;
     protected String date;
+    protected int id;
 
     public Incidencia(String titol, String prioritat, String descripcion, String estat, String date) {
         this.incidencia = titol;
@@ -33,7 +34,7 @@ public class Incidencia implements Serializable {
     public String getDate() {
         return date;
     }
-
+    public int getId(){ return id; }
 
     public void setIncidencia(String incidencia) {
         this.incidencia = incidencia;
@@ -48,5 +49,6 @@ public class Incidencia implements Serializable {
     public void setDate(String date) {
         this.date = date;
     }
+    public void setId(int id){ this.id = id;}
 
 }

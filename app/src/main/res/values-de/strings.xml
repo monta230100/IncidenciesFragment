@@ -17,4 +17,10 @@
     <string name="incidencias">VORFALLPROTOKOLL</string>
     <string name="preferences">PRÄFERENZEN</string>
     <string name="description">BESCHREIBUNG</string>
+    <string-array name="Filtro">
+        <item>ALLES</item>
+        <item>Hoch</item>
+        <item>Mittel</item>
+        <item>Niedrig</item>
+    </string-array>
 </resources>

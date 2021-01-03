@@ -1,19 +1,15 @@
 package com.example.incidenciesfragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import java.util.ArrayList;
 
 public class fragment_menu extends Fragment {
 
@@ -54,7 +50,7 @@ public class fragment_menu extends Fragment {
             }
         });
 
-        Button eliminar = fMenu.findViewById(R.id.btnEliminar);
+        Button eliminar = fMenu.findViewById(R.id.btnDrop);
         eliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View V) {

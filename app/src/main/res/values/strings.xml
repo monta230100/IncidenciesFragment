@@ -16,4 +16,10 @@
     <string name="incidencias">REGISTRO INCIDENCIAS</string>
     <string name="preferences">PREFERENCIAS</string>
     <string name="description">DESCRIPCION</string>
+    <string-array name="Filtro">
+        <item>TODO</item>
+        <item>Alta</item>
+        <item>Media</item>
+        <item>Baja</item>
+    </string-array>
 </resources>

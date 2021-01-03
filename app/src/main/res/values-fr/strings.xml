@@ -17,4 +17,10 @@
     <string name="incidencias">JOURNAL DES INCIDENTS</string>
     <string name="preferences">PRÉFÉRENCES</string>
     <string name="description">DESCRIPTION</string>
+    <string-array name="Filtro">
+        <item>TOUT</item>
+        <item>Haute</item>
+        <item>Moyen</item>
+        <item>Faible</item>
+    </string-array>
 </resources>

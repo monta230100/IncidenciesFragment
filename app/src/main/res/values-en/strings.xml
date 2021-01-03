@@ -17,4 +17,10 @@
     <string name="incidencias">INCIDENT LOG</string>
     <string name="preferences">PREFERENCES</string>
     <string name="description">DESCRIPTION</string>
+    <string-array name="Filtro">
+        <item>ALL</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
 </resources>
